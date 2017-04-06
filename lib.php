@@ -24,6 +24,17 @@
 defined('MOODLE_INTERNAL') || die();
 
 /**
+ * Post process the CSS tree.
+ *
+ * @param string $tree The CSS tree.
+ * @param theme_config $theme The theme config object.
+ */
+function theme_inspiration_css_tree_post_processor($tree, $theme) {
+    $prefixer = new theme_inspiration\autoprefixer($tree);
+    $prefixer->prefix();
+}
+
+/**
  * Inject additional SCSS.
  *
  * @param theme_config $theme The theme config object.
